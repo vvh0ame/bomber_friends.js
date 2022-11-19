@@ -1,7 +1,7 @@
 import requests
 
 class BomberFriends:
-	def __init__(self):
+	def __init__(self) -> None:
 		self.api = "https://e1e6.playfabapi.com"
 		self.headers = {
 			"user-agent": "Dalvik/2.1.0 (Linux; U; Android 7.1.2; ASUS_Z01QD Build/QKQ1.190825.002)",
@@ -17,7 +17,7 @@ class BomberFriends:
 	def login_with_custom_id(
 			self,
 			custom_id: str,
-			create_account: bool = True):
+			create_account: bool = True) -> dict:
 		data = {
 			"CreateAccount": create_account,
 			"CustomId": custom_id,
@@ -36,14 +36,14 @@ class BomberFriends:
 			self.headers["x-entitytoken"] = self.entity_token
 		return response
 
-	def get_entity_token(self):
+	def get_entity_token(self) -> dict:
 		return requests.post(
 			f"{self.api}/Authentication/GetEntityToken",
 			headers=self.headers).json()
 
 	def get_title_data(
 			self,
-			keys: list = ["ScriptVersionAndroid"]):
+			keys: list = ["ScriptVersionAndroid"]) -> dict:
 		data = {
 			"Keys": keys
 		}
@@ -56,7 +56,7 @@ class BomberFriends:
 			self,
 			platform: str = "android",
 			generate_play_stream_event: bool = False,
-			revision_selection: str = "Live"):
+			revision_selection: str = "Live") -> dict:
 		data = {
 			"FunctionName": "getServerStatus",
 			"FunctionParameter": {
@@ -70,7 +70,7 @@ class BomberFriends:
 			json=data,
 			headers=self.headers).json()
 
-	def update_display_name(self, display_name: str):
+	def update_display_name(self, display_name: str) -> dict:
 		data = {
 			"DisplayName": display_name
 		}
@@ -99,7 +99,7 @@ class BomberFriends:
 			show_statistics: bool = False,
 			show_tags: bool = True,
 			show_total_value_to_data_in_usd: bool = False,
-			show_values_to_date: bool = False):
+			show_values_to_date: bool = False) -> dict:
 		data = {
 			"MaxResultsCount": max_results_count,
 			"ProfileConstraints": {
@@ -134,7 +134,7 @@ class BomberFriends:
 			id: int = 0,
 			is_free: bool = True,
 			generate_play_stream_event: bool = False,
-			revision_selection: str = "Live"):
+			revision_selection: str = "Live") -> dict:
 		data = {
 			"FunctionName": "claimSeasonPrize",
 			"FunctionParameter": {
@@ -157,7 +157,7 @@ class BomberFriends:
 			pd_datas: list = ["deckslots", "dungeonrundata", "testidata"],
 			rod_datas: list = ["_clandata"],
 			generate_play_stream_event: bool = False,
-			revision_selection: str = "Live"):
+			revision_selection: str = "Live") -> dict:
 		data = {
 			"FunctionName": "getInitialData",
 			"FunctionParameter": {
@@ -180,7 +180,7 @@ class BomberFriends:
 			reward_spin: bool = False,
 			name: str = "wheel"	,
 			generate_play_stream_event: bool = False,
-			revision_selection: str = "Live"):
+			revision_selection: str = "Live") -> dict:
 		data = {
 			"FunctionName": "claimReward",
 			"FunctionParameter": {
@@ -201,7 +201,7 @@ class BomberFriends:
 			level: int,
 			type: int = 0,
 			generate_play_stream_event: bool = False,
-			revision_selection: str = "Live"):
+			revision_selection: str = "Live") -> dict:
 		data = {
 			"FunctionName": "getSinglePlayerReward",
 			"FunctionParameter": {
@@ -220,7 +220,7 @@ class BomberFriends:
 			self,
 			data: str,
 			generate_play_stream_event: bool = False,
-			revision_selection: str = "Live"):
+			revision_selection: str = "Live") -> dict:
 		data = {
 			"FunctionName": "saveBomberUserData",
 			"FunctionParameter": {
@@ -238,7 +238,7 @@ class BomberFriends:
 			self,
 			slot: int,
 			generate_play_stream_event: bool = False,
-			revision_selection: str = "Live"):
+			revision_selection: str = "Live") -> dict:
 		data = {
 			"FunctionName": "tryStartOpeningSlotChest",
 			"FunctionParameter": {
@@ -257,7 +257,7 @@ class BomberFriends:
 			slot: int,
 			cost: int = 0,
 			generate_play_stream_event: bool = False,
-			revision_selection: str = "Live"):
+			revision_selection: str = "Live") -> dict:
 		data = {
 			"FunctionName": "tryStartOpeningSlotChest",
 			"FunctionParameter": {
@@ -275,7 +275,7 @@ class BomberFriends:
 	def update_user_data(
 			self,
 			data: dict,
-			permission: str = "Private"):
+			permission: str = "Private") -> dict:
 		data = {
 			"Data": data,
 			"Permission": permission
@@ -289,7 +289,7 @@ class BomberFriends:
 			self,
 			standing: int = 0,
 			generate_play_stream_event: bool = False,
-			revision_selection: str = "Live"):
+			revision_selection: str = "Live") -> dict:
 		data = {
 			"FunctionName": "tutorialWon",
 			"FunctionParameter": {
@@ -308,7 +308,7 @@ class BomberFriends:
 			points: int,
 			ad: bool = False,
 			generate_play_stream_event: bool = False,
-			revision_selection: str = "Live"):
+			revision_selection: str = "Live") -> dict:
 		data = {
 			"FunctionName": "addFashionPoints",
 			"FunctionParameter": {
@@ -323,7 +323,7 @@ class BomberFriends:
 			json=data,
 			headers=self.headers).json()
 		
-	def get_user_data(self, user_id: str):
+	def get_user_data(self, user_id: str) -> dict:
 		data = {
 			"PlayFabId": user_id
 		}
@@ -332,18 +332,18 @@ class BomberFriends:
 			json=data,
 			headers=self.headers).json()
 	
-	def get_player_statistics(self):
+	def get_player_statistics(self) -> dict:
 		return requests.post(
 			f"{self.api}/Client/GetPlayerStatistics",
 			headers=self.headers).json()
 	
-	def get_inventory(self):
+	def get_inventory(self) -> dict:
 		return requests.post(
 			f"{self.api}/Client/GetUserInventory",
 			headers=self.headers).json()
 	
 
-	def get_catalog_items(self):
+	def get_catalog_items(self) -> dict:
 		return requests.post(
 			f"{self.api}/Client/GetCatalogItems",
 			headers=self.headers).json()
