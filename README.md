@@ -1,9 +1,13 @@
-# bomber_friends.py
+# bomber_friends.js
 Mobile-API for [Bomber Friends](https://play.google.com/store/apps/details?id=com.hyperkani.bomberfriends) mobile game
 
 ## Example
-```python
-import bomber_friends
-bomber_friends = bomber_friends.BomberFriends()
-bomber_friends.login_with_custom_id(custom_id="")
+```JavaScript
+async function main() {
+	const { BomberFriends } = require("./bomber_friends.js")
+	const bomberFriends = new BomberFriends()
+	await bomberFriends.loginWithCustomId("customOId")
+}
+
+main()
 ```
